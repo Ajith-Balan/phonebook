@@ -1,5 +1,6 @@
 import carSchema from "./models/car.model.js"
-
+import userSchema from "./models/user.model.js"
+import bcrypt from 'bcrypt'
 
 export async function addcar(req,res){
     try{
@@ -86,3 +87,26 @@ export async function deletecar(req, res) {
 }
 
 
+export async function userRegister(req,res) {
+
+    const {username,password,cpassword}=req.body
+console.log(password);
+    if(!(username&&password&&cpassword))
+        return res.status(404).send("fields are empty")
+
+    if(password!==cpassword)
+        return res.status(404).send("password not matched")
+
+bcrypt.hash(password,10).then(async(hpassword)=>{
+    userSchema.create({username,password:hpassword}).then(()=>{
+        return res.status(200).send({msg:"successfully created"})
+
+    })
+    .catch((error)=>{
+        return res.status(400).send({error:error})
+    })
+}).catch((error)=>{
+    res.status(400).send({error:error})
+})
+    
+}
