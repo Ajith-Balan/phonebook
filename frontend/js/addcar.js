@@ -22,7 +22,7 @@ async function addcar(){
     
         alert(data.msg);
         
-        window.location.href='./index.html'
+        window.location.href='../index.html'
     }
     
    

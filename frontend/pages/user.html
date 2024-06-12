@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./user.css">
+    <link rel="stylesheet" href="../css/user.css">
 </head>
 <body>
     <div class="container">
@@ -42,12 +42,12 @@
             </div>
             <p class="small">or use your email account:</p>
             <form id="sign-in-form">      
-              <input id="username" type="text" placeholder="username"/>
-              <input id="password" type="text" placeholder="Password"/>
-              <input id="cpassword" type="text" placeholder="confirm Password"/>
+              <input  type="text" placeholder="username"/>
+              <input  type="text" placeholder="Password"/>
+   
 
               <p class="forgot-password">Forgot your password?</p>
-              <button onclick="userRegister()" class="control-button in">Sign In</button>
+              <button  class="control-button in">Sign In</button>
             </form>
           </div>
           <div class="sign-up" id="sign-up-info">
@@ -71,16 +71,16 @@
             </div>
             <p class="small">or use your email for registration:</p>
             <form id="sign-up-form">
-              <input type="text" placeholder="Name"/>
-              <input type="email" placeholder="Email"/>
-              <input type="password" placeholder="Password"/>
+              <input id="username" type="text" placeholder="username"/>
+              <input id="password" type="text" placeholder="Password"/>
+              <input id="cpassword" type="text" placeholder="confirm Password"/>
 
-              <button class="control-button up">Sign Up</button>
+              <button type="submit" onclick="userRegister()" class="control-button up">Sign Up</button>
             </form>
           </div>
         </div>
       </div>
 
-      <script src="./user.js"></script>
+      <script src="../js/user.js"></script>
 </body>
 </html>

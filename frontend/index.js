@@ -21,7 +21,7 @@ async function getData() {
 
 <br>
 
-              <a href="./update.html?id=${dt._id}"class="card-link btn btn-outline-primary">Edit</a>
+              <a href="./pages/update.html?id=${dt._id}"class="card-link btn btn-outline-primary">Edit</a>
               <button  onclick="deletecar('${dt._id}') "class="btn btn-outline-danger ">Delete</button>
             </div>
           </div>

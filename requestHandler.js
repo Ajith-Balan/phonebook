@@ -1,6 +1,8 @@
 import carSchema from "./models/car.model.js"
 import userSchema from "./models/user.model.js"
 import bcrypt from 'bcrypt'
+import pkg from 'jsonwebtoken'
+const {sign} = pkg
 
 export async function addcar(req,res){
     try{
@@ -19,7 +21,6 @@ export async function addcar(req,res){
             res.status(500).send(error)
         }
 }
-
 
 
 
@@ -110,3 +111,23 @@ bcrypt.hash(password,10).then(async(hpassword)=>{
 })
     
 }
+
+
+
+
+export async function userLogin(req,res){
+    try {
+        const {username, password}=req.body;
+        const user=await userSchema.findOne({username})
+        if(user == null)return res.status(404).send({msg:"user not found"})
+            const id = user._id
+        const success= await bcrypt.compare(password,user.password);
+        if(success!=true) return res.status(400).send({msg:"password not matched"})
+            const token=await sign ({id,username},process.env.JWT_KEY,{expiresIn:"24h"})
+        return res.status(200).send({token})
+    } catch (error) {
+        res.status(400).send({error:error})
+    }
+}
+
+

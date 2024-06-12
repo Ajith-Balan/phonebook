@@ -88,12 +88,13 @@ async function userRegister(){
     
     })
    
-    if (res.status == 200){
+    if (res.status === 200){
         const data=await res.json(); 
     
-        alert("log in successfully ");
         
-        window.location.href='./pages/login.html'
+        window.location.href='../pages/login.html'
+        alert("account created");
+
     } else {
         alert("fields are empty or password not matched")
     }

@@ -33,13 +33,13 @@ async function updatecar() {
 const res=await fetch(`http://localhost:3000/api/update/${id}`,{
 method:"PATCH",
 headers:{"content-Type":"application/json"},
-body:JSON.stringify({name,price,profile,mileage,torque})
+body:JSON.stringify({name,price,brand,mileage,torque})
 
 })
 if( res.status==201){
     const data=await res.json()
     alert(data.msg)
-    window.location.href='./index.html'
+    window.location.href='../index.html'
 }
 
 }
