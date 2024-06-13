@@ -100,7 +100,7 @@ console.log(password);
 
 bcrypt.hash(password,10).then(async(hpassword)=>{
     userSchema.create({username,password:hpassword}).then(()=>{
-        return res.status(200).send({msg:"successfully created"})
+        return res.status(201).send({msg:"successfully created"})
 
     })
     .catch((error)=>{
@@ -122,7 +122,7 @@ export async function userLogin(req,res){
         if(user == null)return res.status(404).send({msg:"user not found"})
             const id = user._id
         const success= await bcrypt.compare(password,user.password);
-        if(success!=true) return res.status(400).send({msg:"password not matched"})
+        if(success!==true) return res.status(400).send({msg:"password not matched"})
             const token=await sign ({id,username},process.env.JWT_KEY,{expiresIn:"24h"})
         return res.status(200).send({token})
     } catch (error) {
@@ -131,3 +131,12 @@ export async function userLogin(req,res){
 }
 
 
+
+
+
+
+export async function Home(req,res){
+    const {id,username}=req.user
+    console.log(req.user);
+    res.status(200).send({username})
+}

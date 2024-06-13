@@ -88,11 +88,10 @@ async function userRegister(){
     
     })
    
-    if (res.status === 200){
-        const data=await res.json(); 
+    if (res.status === 201){
     
         
-        window.location.href='../pages/login.html'
+        window.location.href='../pages/user.html'
         alert("account created");
 
     } else {
@@ -101,3 +100,35 @@ async function userRegister(){
     
    
     }
+
+
+
+
+
+
+    async function userLogin(){
+
+      const username=document.getElementById('lusername').value;
+      const password=document.getElementById('lpassword').value;
+      
+  
+  
+      
+      const res=await fetch('http://localhost:3000/api/login', {
+           method: 'POST',
+      
+      headers: {'Content-Type': 'application/json'},
+       
+      body: JSON.stringify({ username, password })
+      
+      })
+      if (res.status==200) {
+        const data=await res.json()
+        console.log(data.token);
+        localStorage.setItem('userToken',data.token)
+      window.location.href="../index.html" 
+      } else {
+        alert("can't sign in")
+    }
+
+      }

@@ -41,14 +41,14 @@
               </div>
             </div>
             <p class="small">or use your email account:</p>
-            <form id="sign-in-form">      
-              <input  type="text" placeholder="username"/>
-              <input  type="text" placeholder="Password"/>
+            <div id="sign-in-form">      
+              <input id="lusername"  type="text" placeholder="username"/>
+              <input id="lpassword" type="text" placeholder="Password"/>
    
 
               <p class="forgot-password">Forgot your password?</p>
-              <button  class="control-button in">Sign In</button>
-            </form>
+              <button type="submit" onclick="userLogin()" class="control-button in">Sign In</button>
+            </div>
           </div>
           <div class="sign-up" id="sign-up-info">
             <h1>Create Account</h1>
@@ -70,13 +70,13 @@
               </div>
             </div>
             <p class="small">or use your email for registration:</p>
-            <form id="sign-up-form">
+            <div id="sign-up-form">
               <input id="username" type="text" placeholder="username"/>
               <input id="password" type="text" placeholder="Password"/>
               <input id="cpassword" type="text" placeholder="confirm Password"/>
 
               <button type="submit" onclick="userRegister()" class="control-button up">Sign Up</button>
-            </form>
+            </div>
           </div>
         </div>
       </div>

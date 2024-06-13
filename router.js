@@ -7,7 +7,8 @@
 
 import { Router } from "express";
 import * as request from './requestHandler.js'
-import { customMiddle } from "./middleware/customMiddle.js";
+import Auth from "./middleware/auth.js";
+
 // import { home } from 'requestHandler.js'
 // import { userLogin } from "./requestHandler.js";
 const router=Router();
@@ -21,6 +22,7 @@ router.route('/delete/:id').delete(request.deletecar);
 
 router.route('/user').post(request.userRegister)
 router.route('/login').post(request.userLogin)
+router.route('/home').post(Auth,request.Home)
 
 // router.route('/middle').post(customMiddle,request.endpoint)
 
